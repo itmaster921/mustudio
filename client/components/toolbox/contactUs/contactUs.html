@@ -1,0 +1,14 @@
+
+<div class="form-group">
+  <div class="row">
+    <h4>What is your business email address where <br /> you can receive messages?</h4>
+    <div class="col-8">
+      <input ng-disabled="!vm.data.isReply" ng-model="vm.data.contactEmail" type="text" class="form-control round">
+    </div>
+    <h4>Do you want people to reply to this email?</h4>
+    <div class="col-8">
+      <switch class="vertical-align-middle" ng-model="vm.data.isReply" class="green"></switch>
+      <small class="vertical-align-middle">Display</small>
+    </div>
+  </div>
+</div>

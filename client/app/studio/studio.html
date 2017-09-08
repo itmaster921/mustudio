@@ -1,0 +1,13 @@
+<div class="page-content container-fluid">
+	<div class="loader-content" ng-if="vm.isDataLoading">
+		<div class="loader-index">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div ui-view ng-if="!vm.isDataLoading"></div>
+</div>

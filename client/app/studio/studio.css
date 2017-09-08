@@ -1,0 +1,83 @@
+.page-user .page-content form {
+    margin-bottom: 40px;
+}
+
+.page-user .page-content .list-group-item {
+    padding: 25px 0;
+    border-top-color: #e4eaec;
+}
+
+.page-user .page-content .list-group-item:first-child {
+    border-top-color: transparent;
+}
+
+.page-user .page-content .list-group-item:last-child {
+    border-bottom-color: #e4eaec;
+}
+
+.page-user .page-content .list-group-item .media-heading > small {
+    margin-left: 10px;
+}
+
+.page-user .page-content .list-group-item p {
+    margin-bottom: 5px;
+}
+
+.page-user .page-content .nav-tabs-horizontal {
+    position: relative;
+}
+
+.page-user .page-content .page-user-sortlist {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    z-index: 2;
+}
+
+@media (max-width: 991px) {
+    .page-user .page-content .page-user-sortlist {
+        top: -15px;
+    }
+}
+
+@media (max-width: 479px) {
+    .page-user .page-content .list-group-item .media-body {
+        display: block;
+        text-align: center;
+    }
+    .page-user .page-content .list-group-item .media-body {
+        width: auto;
+    }
+    .page-user .page-content .list-group-item .media-body {
+        margin-top: 15px;
+    }
+    .page-user .page-content .tab-content nav {
+        text-align: center;
+    }
+}
+
+.example .animation-example {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.animation-delay-example button {
+    -webkit-animation-name: fade-scale-02;
+    -o-animation-name: fade-scale-02;
+    animation-name: fade-scale-02;
+    -webkit-animation-duration: .5s;
+    -o-animation-duration: .5s;
+    animation-duration: .5s;
+    -webkit-animation-timing-function: ease-out;
+    -o-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    -webkit-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.touch .animation-delay-example:not(.hover) button, .animation-delay-example:not(:hover) button {
+    -webkit-animation-name: none;
+    -o-animation-name: none;
+    animation-name: none;
+}

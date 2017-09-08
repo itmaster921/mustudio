@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-6">
+    <uploader on-image-uploaded="vm.addImage(url)"></uploader>
+    <hr />
+  </div>
+</div>
+
+<div class="row mb-30" ng-repeat="imageObj in vm.data track by $index">
+    <div class="panel mb-0">
+      <div class="panel-heading">
+        <h3 class="panel-title"></h3>
+        <div class="panel-actions">
+          <a class="panel-action icon wb-trash" ng-click="vm.deleteImage($index)" aria-hidden="true"></a>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-4">
+            <img class="overlay-figure" ng-src="{{imageObj.url}}">
+          </div>
+          <div class="col-8">
+            <div class="row">
+              <h5>What is the caption of this picture?</h5>
+              <div class="col-8">
+                <input ng-disabled="!imageObj.isCaptionDisplayed" ng-model="imageObj.caption" type="text" class="form-control round">
+              </div>
+            </div>
+            <div class="row">
+              <h5>What is the subcaption of this picture?</h5>
+              <div class="col-8">
+                <input ng-disabled="!imageObj.isCaptionDisplayed" ng-model="imageObj.subCaption" type="text" class="form-control round">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4 pt-20">
+                <switch  ng-model="imageObj.isCaptionDisplayed" class="green vertical-align-middle"></switch>
+                <small class="vertical-align-middle">Display Caption</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

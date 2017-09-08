@@ -1,0 +1,16 @@
+mixin subscription(data)
+  section#about-us.bg-primary
+    .container
+      .row
+        .col-lg-8.col-lg-offset-2.text-center
+          h2.section-heading Want more updates?
+          hr.light
+          p.text-faded
+            | Subscribe to our mailing list to receive an update when new items arrive!
+
+          #subscription
+            form#subscribe-form(role='form', action='/api/subscription', method='post', name='subscribe-form', novalidate='')
+              .input-group.input-group-lg
+                input#mce-EMAIL.form-control(type='email', name='EMAIL', placeholder='Email address...')
+                span.input-group-btn
+                  button#mc-embedded-subscribe.btn.btn-secondary(type='submit', name='subscribe') Subscribe!

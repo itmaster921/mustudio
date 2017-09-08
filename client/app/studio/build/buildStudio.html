@@ -1,0 +1,61 @@
+<div class="page-content container-fluid">
+	<h1 class="page-title pt-10 pb-20 animationIf" ng-if="vm.buildStep == 'select'">
+		<div class="row">
+			<span class="col-6">
+				Customize Template
+			</span>
+			<div class="col-5 text-right">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default btn-outline" ng-show="vm.showPublish" ng-click="vm.publishStudio()"><i class="icon wb-upload"></i> Publish</button>
+					<button type="button" class="btn btn-default dropdown-toggle btn-outline" id="exampleSplitDropdown1" data-toggle="dropdown" aria-expanded="false">
+						<i class="icon wb-settings mr-0"></i>
+					</button>
+					<div class="dropdown-menu" aria-labelledby="exampleSplitDropdown1" role="menu">
+						<a class="dropdown-item disabled" href="javascript:void(0)" role="menuitem" ui-sref="updateMetaDescription">Update Meta description</a>
+						<a class="dropdown-item" ui-sref="studio.templates" role="menuitem">Update Template</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</h1>
+  <div class="list-group animationIf" ng-if="vm.buildStep == 'select'">
+    <a class="list-group-item list-group-item-action flex-column align-items-start"
+       href="javascript:void(0)"
+       ng-repeat="section in vm.currentSections.section.jsonPath"
+       ng-click="vm.currentSection = section; vm.buildStep = 'customize'">
+      <h4 class="list-group-item-heading mt-0 mb-5" data-ng-bind="::section.label"></h4>
+      <p class="mb-0">Donec id elit non mi porta gravida at eget metus.</p>
+    </a>
+  </div>
+
+  <div class="row animationIf" ng-if="vm.buildStep == 'customize'">
+    <h1 class="page-title pt-10 pb-20">
+      <div class="row">
+			<span class="col-9">
+				{{vm.currentSection.label}}
+			</span>
+        <div class="col-3">
+          <div class="btn-group text-right">
+            <button type="button" class="btn btn-default btn-outline" ng-click="vm.saveSections()">Save</button>
+            <button type="button" class="btn btn-default btn-outline" ng-click="vm.reset()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </h1>
+    <div class="offset-1 col-10">
+      <div ng-switch="vm.currentSection.name">
+        <toolbox-slider ng-switch-when="slide-show" data="vm.currentSection.data"></toolbox-slider>
+        <toolbox-testimonial ng-switch-when="testimonial" data="vm.currentSection.data"></toolbox-testimonial>
+        <toolbox-location ng-switch-when="location" data="vm.currentSection.data"></toolbox-location>
+        <toolbox-contact-us ng-switch-when="contact-us" data="vm.currentSection.data"></toolbox-contact-us>
+        <toolbox-about-us ng-switch-when="about-us" data="vm.currentSection.data"></toolbox-about-us>
+        <toolbox-advance-product-catalog ng-switch-when="product-catalog" data="vm.currentSection.data"></toolbox-advance-product-catalog>
+        <toolbox-product-service ng-switch-when="product-service" data="vm.currentSection.data"></toolbox-product-service>
+        <toolbox-subscription ng-switch-when="subscription" data="vm.currentSection.data"></toolbox-subscription>
+        <toolbox-news-announcement ng-switch-when="news-announcement" data="vm.currentSection.data"></toolbox-news-announcement>
+        <toolbox-gallery ng-switch-when="gallery" data="vm.currentSection.data"></toolbox-gallery>
+        <toolbox-social-media ng-switch-when="social-media" data="vm.currentSection.data"></toolbox-social-media>
+      </div>
+    </div>
+  </div>
+</div>

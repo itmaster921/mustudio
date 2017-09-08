@@ -1,0 +1,94 @@
+<div class="news-announcement">
+  <div class="row">
+    <div class="offset-1 col-10">
+      <uploader on-image-uploaded="vm.addImage(url)"></uploader>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="offset-1 col-4">
+
+      <div class="form-group">
+        <div class="row">
+          <h6 class="col-8">Enter title</h6>
+          <div class="col-12">
+            <input ng-model="vm.data.title" type="text" class="form-control round">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <h6 class="col-8">Description</h6>
+          <div class="col-12">
+            <textarea ng-model="vm.data.description" type="text" class="form-control"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <h6 class="col-8">Feature this album</h6>
+          <div class="col-4">
+            <switch class="display-block" ng-model="vm.data.featureAlbum.isEnabled" class="green vertical-align-middle"></switch>
+            <small class="vertical-align-middle display-block" class="vertical-align-middle">Yes</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <h6 class="col-8">Post this in your Social Media</h6>
+          <div class="col-4">
+            <switch class="display-block" ng-model="vm.data.socialMediaPost.isEnabled" class="green vertical-align-middle"></switch>
+            <small class="vertical-align-middle display-block" class="vertical-align-middle">Yes</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="offset-2 col-4">
+
+      <div class="form-group">
+        <div class="row">
+          <h6 class="col-8">Album Name</h6>
+          <div class="col-12">
+            <input
+              uib-typeahead="album for album in vm.data.albums | filter:$viewValue | limitTo:8"
+              ng-model="vm.data.album"
+              type="text"
+              class="form-control round">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <h6 class="col-8">Sort by</h6>
+          <div class="col-12">
+            <select class="form-control round" ng-model="vm.data.sortType">
+              <option>Date</option>
+              <option>Album</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-12">
+            <select class="form-control round" ng-model="vm.data.status.option">
+              <option>Save As Draft</option>
+              <option>Publish</option>
+              <option>unPublish</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    </div>
+
+</div>

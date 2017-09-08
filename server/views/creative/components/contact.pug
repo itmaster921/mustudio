@@ -1,0 +1,13 @@
+mixin contactUs(data)
+    section#contact-us.bg-dark
+        .container
+            .row
+                .col-lg-8.col-lg-offset-2.text-center
+                    h2.section-heading Let's Get In Touch!
+                    hr.primary
+                    p
+                        | Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!
+                .col-lg-8.col-lg-offset-2.text-center
+                    i.fa.fa-envelope-o.fa-3x.sr-contact
+                    p
+                        a(href='mailto:' + data.contactEmail) #{data.contactEmail}

@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-12 text-center">
+    <div class="form-group">
+      <form class="upload-form" id="exampleUploadForm" method="POST">
+        <div ngf-drop ngf-select ng-model="file"
+             class="drop-box"
+             ngf-multiple="true"
+             ngf-drag-over-class="'dragover'"
+             accept="image/*"
+             ngf-pattern="'image/*'">
+             <p ng-if="$ctrl.uploadBoxLabel.length === 0">
+              Click Or Drop Multiple Files To Upload.
+             </p>
+             <p ng-repeat="item in $ctrl.uploadBoxLabel">
+              {{item}} 
+             </p>
+            </div>
+        <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+      </form>
+    </div>
+  </div>
+</div>

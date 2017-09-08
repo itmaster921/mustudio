@@ -1,0 +1,30 @@
+//- carousel
+mixin carousel(data)
+    .carousel.slide(id="carousel-mycarousel" ,data-ride="carousel")
+        //- Indicators
+        ol.carousel-indicators
+            each item,index in data
+                if(index === 0)
+                    li.active(data-target="#carousel-mycarousel", data-slide-to=index)
+                else
+                    li(data-target="#carousel-mycarousel", data-slide-to=index)
+
+
+        //- Wrapper for slides
+        .carousel-inner(role="listbox")
+            each item,index in data
+                if(index === 0)
+                    .item.active
+                        img(src=item)
+
+                else
+                    .item
+                        img(src=item)
+
+        //-  Controls
+        a.left.carousel-control(href="#carousel-mycarousel", role="button", data-slide="prev")
+            +icon("chevron-left")
+            span.sr-only Previous
+        a.right.carousel-control(href="#carousel-mycarousel", role="button", data-slide="next")
+            +icon("chevron-right")
+            span.sr-only Next

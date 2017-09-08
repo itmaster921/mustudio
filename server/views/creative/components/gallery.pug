@@ -1,0 +1,18 @@
+mixin gallery(data)
+  section#gallery.bg-primary
+    .container
+      .row
+        .col-lg-8.col-lg-offset-2.text-center
+          h2.section-heading Gallery
+          hr.light
+          .gallery
+            .desc #{data.title}
+            a(target='_blank', href=data.imageUrl)
+              img(src=data.imageUrl, alt=data.title, width='300', height='200')
+            .desc #{data.description}
+
+          if data.socialMediaPost && data.socialMediaPost.isEnabled
+            form#gallery-form(role='form', action='/api/postToSM', method='post', name='subscribe-form', novalidate='')
+              .input-group.input-group-lg
+                span.input-group-btn
+                  button#mc-embedded-subscribe.btn.btn-secondary(type='submit', name='subscribe') Post this in your Social Media!

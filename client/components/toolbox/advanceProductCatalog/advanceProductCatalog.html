@@ -1,0 +1,176 @@
+<div ng-if="vm.apcStep == 'selectCatalg'">
+  <div class="row">
+    <div class="col-md-3 text-center" ng-repeat="catalog in vm.data.catalogues">
+      <div ng-click="vm.setCurrentCatalog(catalog)" style="cursor: pointer;">
+        <img class="img-rounded" width="150" height="150" src="/client/assets/images/placeholder.png">
+      </div>
+      <span>{{::catalog}}</span>
+    </div>
+  </div>
+</div>
+
+<div ng-if="vm.apcStep == 'addCategoryContent'">
+  <h2 class="col-12 text-center">{{::vm.currentCatalog}}</h2>
+  <div class="row">
+    <div class="offset-1 col-10">
+      <button class="btn btn-primary btn-lg btn-outline" ng-click="vm.setCurrentProductContent({})">Add Content</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="offset-1 col-10" ng-repeat="product in vm.filterProductsByCatalog(vm.data.items, vm.currentCatalog) track by $index">
+      <hr />
+      <div class="panel mb-0">
+        <div class="panel-heading">
+          <h3 class="panel-title"></h3>
+          <div class="panel-actions">
+            <a class="panel-action icon wb-edit" ng-click="vm.setCurrentProductContent(product, $index)" aria-hidden="true"></a>
+            <a class="panel-action icon wb-trash" ng-click="vm.deleteProduct($index)" aria-hidden="true"></a>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-4 text-center">
+              <img class="overlay-figure" ng-src="{{product.imageUrl}}">
+              <strong>{{product.status.option}}</strong>
+            </div>
+            <div class="col-8">
+              <table >
+                <tbody>
+                <tr>
+                  <td>Title:</td><td><strong>{{product.title}}</strong></td>
+                </tr>
+                <tr>
+                  <td>Description: </td><td><strong>{{product.description}}</strong></td>
+                </tr>
+                <tr>
+                  <td>Location: </td><td><strong>{{product.location.value}}</strong></td>
+                </tr>
+                <tr>
+                  <td>Price: </td><td><strong>{{product.price.value | currency}}</strong></td>
+                </tr>
+                <tr>
+                  <td>Variants: </td><td><strong>{{product.variant}}</strong></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div ng-if="vm.apcStep == 'addContent'">
+  <h2 class="col-12 text-center">
+    Add Content
+    <button type="button" class="btn btn-icon btn-primary btn-outline btn-round btn-sm"  ng-click="vm.saveProduct(vm.currentProductContent)"><i class="icon wb-plus mr-0" aria-hidden="true"></i></button>
+    <button type="button" class="btn btn-icon btn-danger btn-outline btn-round btn-sm" ng-click="vm.cancelProduct()"><i class="icon wb-close mr-0" aria-hidden="true"></i></button>
+  </h2>
+
+  <div class="row">
+    <div class="offset-1 col-10">
+      <uploader on-image-uploaded="vm.addImage(url)"></uploader>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="offset-1 col-4">
+
+      <div class="form-group">
+        <div class="row">
+          <h6 class="col-8">Enter title</h6>
+          <div class="col-12">
+            <input ng-model="vm.currentProductContent.title" type="text" class="form-control round">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <h6 class="col-8">Enter Description</h6>
+          <div class="col-12">
+            <textarea ng-model="vm.currentProductContent.description" type="text" class="form-control"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <h6 class="col-8">Price</h6>
+          <div class="col-8">
+            <input ng-disabled="!vm.currentProductContent.price.isEnabled" ng-model="vm.currentProductContent.price.value" type="text" class="form-control round">
+          </div>
+          <div class="col-4">
+            <switch ng-model="vm.currentProductContent.price.isEnabled" class="green vertical-align-middle"></switch>
+            <small class="vertical-align-middle">Display</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <h6 class="col-8">Location</h6>
+          <div class="col-8">
+            <input ng-disabled="!vm.currentProductContent.location.isEnabled" ng-model="vm.currentProductContent.location.value" type="text" class="form-control round">
+          </div>
+          <div class="col-4">
+            <switch ng-model="vm.currentProductContent.location.isEnabled" class="green vertical-align-middle"></switch>
+            <small class="vertical-align-middle">Display</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="offset-2 col-4">
+
+      <div class="form-group">
+        <div class="row">
+          <h6 class="col-8">Catalog</h6>
+          <div class="col-12">
+            <input
+              uib-typeahead="catalog for catalog in vm.data.catalogues | filter:$viewValue | limitTo:8"
+              ng-model="vm.currentProductContent.catalog"
+              type="text"
+              class="form-control round">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <h6 class="col-8">Variants</h6>
+          <div class="col-12">
+            <input
+              uib-typeahead="variant for variant in vm.data.variants | filter:$viewValue | limitTo:8"
+              ng-model="vm.currentProductContent.variant"
+              type="text"
+              class="form-control round">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <h6 class="col-8">Status</h6>
+          <div class="col-12">
+            <input ng-model="vm.currentProductContent.status.value" type="text" class="form-control round">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-12">
+            <select class="form-control" ng-model="vm.currentProductContent.status.option">
+              <option>Save As Draft</option>
+              <option>Publish</option>
+              <option>unPublish</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+.navbar-wrapper
+    .container
+        nav.navbar.navbar-inverse.navbar-static-top
+            .container
+                .navbar-header
+                    button(type="button" ,class="navbar-toggle collapsed", data-toggle="collapse", data-target="#navbar" ,aria-expanded="false", aria-controls="navbar")
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+
+                    a(class="navbar-brand", href="#") Project name
+                #navbar.navbar-collapse.collapse
+                    ul.nav.navbar-nav
+                        li.active
+                            a(href="#") Home
+                        li
+                            a(href="#about") About
+                        li
+                            a(href="#contact") Contact
+                        li.dropdown
+                            a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                                | Dropdown
+                                span.caret
+                            ul.dropdown-menu(role='menu')
+                                li
+                                    a(href='#') Action
+                                li
+                                    a(href='#') Another action
+                                li
+                                    a(href='#') Something else here
+                                li.divider
+                                li.dropdown-header Nav header
+                                li
+                                    a(href='#') Separated link
+                                li
+                                    a(href='#') One more separated link

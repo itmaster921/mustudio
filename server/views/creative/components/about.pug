@@ -1,0 +1,10 @@
+mixin aboutUs(data)
+    header#about-us
+      .header-content
+        .header-content-inner
+          h1#homeHeading #{data.title.value}
+          if data.subtitle && data.subtitle.isEnabled
+            h4.section-heading #{data.subtitle.value}
+          hr
+          p
+            | #{data.description}

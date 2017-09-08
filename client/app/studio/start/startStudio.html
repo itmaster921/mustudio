@@ -1,0 +1,22 @@
+<div class="page-content container-fluid">
+	<h1 class="page-title pt-10 pb-20">Templates Gallery</h1>
+	<div class="panel offset-1 col-md-10">
+		<div class="panel-body">
+			<ul class="blocks blocks-100 blocks-xxl-4 blocks-lg-3 blocks-md-2">
+				<li ng-repeat="(templateName, templateValue) in vm.TEMPLATES">
+					<div class="card card-shadow">
+						<figure class="card-img-top overlay-hover overlay">
+							<img class="overlay-figure overlay-scale" ng-src="{{ ::templateValue.image}}">
+							<figcaption class="overlay-panel overlay-background overlay-fade overlay-icon">
+								<a class="icon wb-plus" href="javascript:" ng-click="vm.selectTemplate(templateName)"></a>
+							</figcaption>
+						</figure>
+						<div class="card-block">
+							<h4 class="card-title">{{ ::templateValue.label }}</h4>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

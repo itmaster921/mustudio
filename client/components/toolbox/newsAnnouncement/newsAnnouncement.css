@@ -1,0 +1,35 @@
+.news-announcement select.form-control {
+  border-radius: 20px;
+}
+
+.news-announcement .display-block {
+  display: block;
+}
+
+.news-announcement small.display-block {
+  padding-left: 12px;
+}
+
+.news-announcement .dropdown-toggle:after{
+  display: none;
+}
+
+.news-announcement .datetimepicker .table th.switch {
+  display: table-cell;
+}
+
+.news-announcement .news-announcement .datetimepicker .table td, .datetimepicker .table th {
+  padding: 5px;
+}
+
+.news-announcement .date-time-picker-link {
+  width: auto;
+}
+
+.news-announcement .date-time-picker-link:hover {
+  text-decoration: none;
+}
+
+.news-announcement .date-time-picker-link input {
+  cursor: pointer;
+}

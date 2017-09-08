@@ -1,0 +1,14 @@
+extends layout
+
+include partials/icons
+
+
+block body
+    each sectionItem in section.jsonPath
+        case sectionItem.name
+            when 'carousel_fullscreen'
+                include partials/carousel_fullscreen
+                +carousel(sectionItem.data)
+            when 'testimonial'
+                include partials/testimonial
+                +quote-carousel(sectionItem.data)

@@ -1,0 +1,41 @@
+extends layout
+
+include components/icons
+
+
+block body
+    include components/navbar
+    +navbar(section.jsonPath)
+
+    each sectionItem in section.jsonPath
+        case sectionItem.name
+            when 'slide-show'
+                include components/carousel_fullscreen
+                +carousel(sectionItem.data)
+            when 'testimonial'
+                include components/testimonial
+                +quote-carousel(sectionItem.data)
+            when 'about-us'
+                include components/about
+                +aboutUs(sectionItem.data)
+            when 'contact-us'
+                include components/contact
+                +contactUs(sectionItem.data)
+            when 'product-service'
+                include components/product-service
+                +productService(sectionItem.data)
+            when 'product-catalog'
+                include components/product-catalog
+                +productCatalog(sectionItem.data)
+            when 'subscription'
+                include components/subscription
+                +subscription(sectionItem.data)
+            when 'news-announcement'
+                include components/news-announcement
+                +news-announcement(sectionItem.data)
+            when 'gallery'
+                include components/gallery
+                +gallery(sectionItem.data)
+
+    include components/footer
+    +footer(section.jsonPath)

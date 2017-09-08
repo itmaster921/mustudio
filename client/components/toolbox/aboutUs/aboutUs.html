@@ -1,0 +1,36 @@
+<div class="form-group">
+  <div class="row">
+    <h4 class="col-8">Enter title</h4>
+    <div class="col-8">
+      <input ng-model="vm.data.title.value" type="text" class="form-control round">
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="row">
+    <h4 class="col-8">Enter subtitle</h4>
+    <div class="col-8">
+      <input ng-disabled="!vm.data.subtitle.isEnabled" ng-model="vm.data.subtitle.value" type="text" class="form-control round">
+    </div>
+    <div class="col-4">
+      <switch ng-model="vm.data.subtitle.isEnabled" class="green vertical-align-middle"></switch>
+      <small class="vertical-align-middle">Display</small>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="row">
+    <h4 class="col-8">Describe {{vm.data.title.value}} </h4>
+    <div class="col-8">
+      <textarea ng-model="vm.data.description" cols="50" rows="5"></textarea>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-6">
+    <uploader on-image-uploaded="vm.addImage(url)"></uploader>
+  </div>
+</div>

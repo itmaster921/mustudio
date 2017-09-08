@@ -1,0 +1,54 @@
+<div class="panel offset-1 col-md-10">
+	<div class="panel-heading">
+		<h3 class="panel-title">Testimonial</h3>
+		<div class="panel-actions">
+			<a class="panel-action icon wb-close" ng-if="vm.itemEditMode" ng-click="vm.clearMode()"></a>
+		</div>
+	</div>
+	<div class="panel-body container-fluid">
+		<div class="testimonial">
+			<ul class="testimonial-ul row">
+				<li class="testimonial-item col-md-4 overlay overlay-hover" ng-repeat="testimonialItem in vm.data track by $index" ng-class="{'img-bordered img-bordered-primary': vm.currentIdex === $index}">
+					<div class="testimonial-content overlay-figure">
+						<p ng-bind="testimonialItem.text"></p>
+					</div>
+					<figcaption class="overlay-panel overlay-background overlay-fade overlay-icon">
+						<a class="icon wb-pencil" href="javascript:" ng-click="vm.editTestimonial($index)"></a>
+						<a class="icon wb-trash" href="javascript:" ng-click="vm.deleteTestimonial($index)"></a>
+					</figcaption>
+					<div class="testimonial-image">
+						<a class="avatar" href="javascript:void(0)">
+							<img ng-src="{{testimonialItem.avatar}}" alt="{{}}">
+						</a>
+					</div>
+					<span class="testimonial-author" ng-bind="testimonialItem.name"></span>
+				</li>
+				<li class="testimonial-item col-md-4 vertical-align" ng-if="vm.data.length < 3">
+						<div class="vertical-align-middle offset-5">
+							<button type="button" class="btn btn-icon btn-primary" ng-click="vm.itemEditMode = 'add'"><i class="icon wb-plus" aria-hidden="true"></i></button>
+						</div>
+				</li>
+			</ul>
+		</div>
+		<div class="row pt-20" ng-if="vm.itemEditMode">
+			<div class="col-lg-10 offset-1 form-group">
+				<form>
+					<div class="row">
+						<div class="form-group col-md-6">
+							<input type="text" class="form-control" name="clientName" ng-model="vm.currentTestimonial.name" placeholder="Client Name">
+						</div>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="avatar" ng-model="vm.currentTestimonial.avatar" placeholder="Client Avatar">
+					</div>
+					<div class="form-group">
+						<textarea class="form-control" rows="6" placeholder="Brief..." ng-model="vm.currentTestimonial.text"></textarea>
+					</div>
+					<div class="form-group float-right">
+						<button type="button" class="btn btn-primary" ng-click="vm.saveTestimonial()">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

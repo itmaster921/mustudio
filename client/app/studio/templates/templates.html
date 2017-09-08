@@ -1,0 +1,20 @@
+<div class="page-content container-fluid">
+	<h1 class="page-title pt-10 pb-20">Templates Gallery</h1>
+	<div class="row">
+    <div class="col-3 text-center" ng-repeat="(templateName, templateValue) in vm.TEMPLATES track by $index">
+      <figure class="overlay overlay-hover" ng-click="vm.selectedTemplate = templateName">
+        <img class="overlay-figure" ng-src="{{ ::templateValue.image}}" ng-class="{'img-bordered img-bordered-primary': vm.selectedTemplate == templateName}">
+        <figcaption class="overlay-panel overlay-background overlay-fade overlay-icon">
+          <a class="icon wb-check" href="javascript:"></a>
+        </figcaption>
+      </figure>
+      <h6>{{ ::templateValue.label }}</h6>
+    </div>
+	</div>
+  <div class="row">
+    <div class="col-12 text-center" ng-if="vm.selectedTemplate">
+      <button class="btn btn-primary" ng-click="vm.saveTemplate(vm.selectedTemplate)">Save Template</button>
+      <a class="btn btn-primary" ui-sref="dashboard">Cancel</a>
+    </div>
+  </div>
+</div>

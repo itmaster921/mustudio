@@ -1,0 +1,30 @@
+<div class="form-group">
+  <div class="row">
+    <h4 class="col-8">From</h4>
+    <div class="col-8">
+      <input ng-model="vm.data.from" type="text" class="form-control round">
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="row">
+    <h4 class="col-8">Options</h4>
+    <div class="col-8">
+      <input
+        uib-typeahead="option for option in vm.emailOptions | filter:$viewValue | limitTo:8"
+        ng-model="vm.data.options"
+        type="text"
+        class="form-control round">
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="row">
+    <h4 class="col-8">Email Template Compaigne </h4>
+    <div class="col-8">
+      <textarea ng-model="vm.data.emailTemplate" cols="50" rows="5"></textarea>
+    </div>
+  </div>
+</div>

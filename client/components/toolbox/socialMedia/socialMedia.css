@@ -1,0 +1,30 @@
+.social-media {
+  display: table;
+  padding: 0 10px;
+}
+
+.social-media .social-media-src {
+  display: table-cell;
+}
+
+.social-media .social-media-wrapper {
+  vertical-align: middle;
+  padding: 5px 0 5px 10px;
+}
+
+.social-media .social-media-wrapper .social-media-wrapper_btn {
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 7px;
+  line-height: 14px;
+  cursor: pointer;
+}
+
+.social-media .social-media-wrapper .social-media-wrapper_text {
+  text-transform: capitalize;
+  margin-bottom: 6px;
+}
+
+.social-media .social-media-wrapper input {
+  max-width: 78px;
+}

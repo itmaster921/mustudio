@@ -1,0 +1,21 @@
+mixin news-announcement(data)
+  section#news-announcement
+    .container
+      .row
+        .col-lg-8.col-lg-offset-2.text-center
+          h2.section-heading News
+          hr.primary
+          if data && data.imageUrl
+            a(target='_blank', href=data.imageUrl)
+              img(src=data.imageUrl, width='400', height='400')
+
+          h3.section-heading #{data.title}
+          p.text-left #{data.description}
+          if (data.date && data.date.value)
+            p.text-right #{data.textValue}
+
+          if data.socialMediaPost && data.socialMediaPost.isEnabled
+            form#news-form(role='form', action='/api/postToSM', method='post', name='subscribe-form', novalidate='')
+              .input-group.input-group-lg
+                span.input-group-btn
+                  button#mc-embedded-subscribe.btn.btn-secondary(type='submit', name='subscribe') Post this in your Social Media!

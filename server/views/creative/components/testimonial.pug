@@ -1,0 +1,47 @@
+//- carousel
+mixin quote-carousel(data)
+    section#testimonial
+        .container
+            .row
+                .col-lg-12.text-center
+                    h2.section-heading What Clients say
+                    hr.primary
+        .container
+            .row
+                .col-md-12
+                    #quote-carousel.carousel.slide(data-ride='carousel')
+                        // Carousel Slides / Quotes
+                        .carousel-inner.text-center
+                            each item,index in data
+                                if(index === 0)
+                                    .item.active
+                                        blockquote
+                                            .row
+                                                .col-sm-8.col-sm-offset-2
+                                                    p
+                                                        | #{item.text}
+                                                    small #{item.name}
+
+                                else
+                                    .item
+                                        blockquote
+                                            .row
+                                                .col-sm-8.col-sm-offset-2
+                                                    p
+                                                        | #{item.text}
+                                                    small #{item.name}
+
+                        // Bottom Carousel Indicators
+                        ol.carousel-indicators
+                            each item,index in data
+                                if(index === 0)
+                                    li.active(data-target='#quote-carousel', data-slide-to='0')
+                                        img.img-responsive(src=item.avatar, alt='')
+                                else
+                                    li(data-target='#quote-carousel', data-slide-to=index)
+                                        img.img-responsive(src=item.avatar, alt='')
+                        // Carousel Buttons Next/Prev
+                        a.left.carousel-control(data-slide='prev', href='#quote-carousel')
+                            i.fa.fa-chevron-left
+                        a.right.carousel-control(data-slide='next', href='#quote-carousel')
+                            i.fa.fa-chevron-right

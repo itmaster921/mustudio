@@ -1,0 +1,31 @@
+mixin footer(sections)
+  footer#social-media.footer
+    .footerholder
+      .container.clearfix
+        each sectionItem in sections
+          case sectionItem.name
+            when 'social-media'
+              ul.socialsFooter
+                each item, idx in sectionItem.data
+                  - var itemUrl = 'https://' + item;
+                  case idx
+                    when 'facebook'
+                      li
+                        a(href=itemUrl, target='_blank')
+                          i.icon-facebook
+                    when 'twitter'
+                      li
+                        a(href=itemUrl, target='_blank')
+                          i.icon-twitter
+                    when 'google+'
+                      li
+                        a(href=itemUrl, target='_blank')
+                          i.icon-gplus
+                    when 'instagram'
+                      li
+                        a(href=itemUrl, target='_blank')
+                          i.icon-instagram
+        p
+          | © 2017
+          span.brand  more
+          |  All Rights Reserved.

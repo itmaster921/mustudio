@@ -1,0 +1,21 @@
+mixin toCurrency(price)
+  span.price-new #{parseInt(price).toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
+
+
+mixin productService(data)
+  section#product-service
+    .container
+      .row
+        each product,index in data
+          .col-sm-3
+            article.col-item
+              .photo
+                a(href='#')
+                  img.img-responsive(src=product.imageUrl)
+              .info
+                .row
+                  .price-details.col-md-6
+                    p.details
+                      | #{product.description}
+                    h3 #{product.title}
+                    +toCurrency(product.price.value)

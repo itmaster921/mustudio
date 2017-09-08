@@ -1,0 +1,40 @@
+<!--
+<div class="modal-dialog modal-simple">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+			<h4 class="modal-title" id="exampleFillInModalTitle">Set The Messages</h4>
+		</div>
+		<div class="modal-body">
+			<form>
+				<div class="row">
+					<div class="col-xl-4 form-group">
+						<input type="text" class="form-control" name="firstName" placeholder="First Name">
+					</div>
+					<div class="col-xl-4 form-group">
+						<input type="email" class="form-control" name="lastName" placeholder="Last Name">
+					</div>
+					<div class="col-xl-4 form-group">
+						<input type="email" class="form-control" name="email" placeholder="Your Email">
+					</div>
+					<div class="col-xl-12">
+						<textarea class="form-control" rows="5" placeholder="Type your message"></textarea>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>-->
+<div class="modal-header">
+	<button ng-if="modal.dismissable" type="button" ng-click="$dismiss()" class="close">&times;</button>
+	<h4 ng-if="modal.title" ng-bind="modal.title" class="modal-title"></h4>
+</div>
+<div class="modal-body">
+	<p ng-if="modal.text" ng-bind="modal.text"></p>
+	<div ng-if="modal.html" ng-bind-html="modal.html"></div>
+</div>
+<div class="modal-footer">
+	<button ng-repeat="button in modal.buttons" ng-class="button.classes" ng-click="button.click($event)" ng-bind="button.text" class="btn"></button>
+</div>

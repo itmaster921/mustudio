@@ -1,0 +1,59 @@
+
+<div class="form-group">
+  <div class="row">
+    <h4>What is your business address?</h4>
+    <div class="col-8">
+      <input ng-disabled="!vm.data.address.isEnabled" ng-model="vm.data.address.value" type="text" class="form-control round">
+    </div>
+    <div class="col-4">
+      <switch  ng-model="vm.data.address.isEnabled" class="green vertical-align-middle"></switch>
+      <small class="vertical-align-middle">Display</small>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="row">
+    <h4>What is your phone number?</h4>
+    <div class="col-8">
+      <input ng-disabled="!vm.data.phoneNumber.isEnabled" ng-model="vm.data.phoneNumber.value" type="text" class="form-control round">
+    </div>
+    <div class="col-4">
+      <switch ng-model="vm.data.phoneNumber.isEnabled" class="green vertical-align-middle"></switch>
+      <small class="vertical-align-middle">Display</small>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <h4>What’s your business hours?</h4>
+  <div class="col-12">
+    <table>
+      <tr>
+        <td rowspan="2">
+          <div class="checkbox-primary" ng-repeat="(day, enabled) in vm.data.businessHours.days">
+            <input type="checkbox"
+                   ng-model="vm.data.businessHours.days[day]">
+            <label>{{::day}}</label>
+          </div>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="row">
+            <div class="offset-2 col-8 text-center">
+              <div uib-timepicker ng-model="vm.data.businessHours.timeFrom" show-meridian="true"></div>
+            </div>
+            <div class="col-10 vertical-align text-center">
+              <span class="vertical-align-middle">To</span>
+            </div>
+            <div class="offset-2 col-8 text-center">
+              <div uib-timepicker ng-model="vm.data.businessHours.timeTo" show-meridian="true"></div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

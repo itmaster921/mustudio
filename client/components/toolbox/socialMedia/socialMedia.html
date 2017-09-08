@@ -1,0 +1,24 @@
+<div class="form-group">
+  <div class="row">
+    <div class="col-12" style="margin-top: 50px;">
+      <h3 style="margin-bottom: 30px;">Connect to your social media</h3>
+    </div>
+
+    <div class="col-3 social-media" ng-repeat="socialNetwork in vm.socialNetworks track by $index">
+      <div class="social-media-src">
+        <img src="{{socialNetwork.src}}" width="60" height="60"/>
+      </div>
+      <div class="inline-block social-media-wrapper" >
+        <div>
+          <p class="social-media-wrapper_text" ng-hide="socialNetwork.show">{{::socialNetwork.name}}</p>
+          <input ng-show="socialNetwork.show" ng-model="vm.data[socialNetwork.name]"/>
+        </div>
+        <div>
+          <button class="social-media-wrapper_btn" ng-click="socialNetwork.show=true">
+            connect
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

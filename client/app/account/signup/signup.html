@@ -1,0 +1,288 @@
+<div class="page-content" ng-init="vm.studioRegisterStep = 'cookieLaw'">
+  <div class="offset-2 col-8">
+    <!-- Cookies Law step-->
+    <div ng-if="vm.studioRegisterStep === 'cookieLaw'">
+      <h2 class="modal-title text-center pb-20">Welcome to Meshup Studio</h2>
+      <div class="row">
+
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'accountOwner'">Start</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Account Owner -->
+    <div ng-if="vm.studioRegisterStep === 'accountOwner'">
+      <h2 class="text-center pb-20">Create an account</h2>
+      <div class="row">
+        <div class="alert dark alert-danger alert-dismissible offset-3 col-6" role="alert" ng-if="vm.errors['register-account'].isError">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+          {{ vm.errors['register-account'].msg}}
+        </div>
+      </div>
+      <h4 class="text-center pt-20">Type your full name</h4>
+      <div class="row">
+        <div class="offset-2 col-4 text-center">
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg" ng-model="vm.account.firstName" placeholder="First Name">
+          </div>
+        </div>
+        <div class="col-4 text-center">
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg" ng-model="vm.account.lastName" placeholder="Last Name">
+          </div>
+        </div>
+      </div>
+      <h4 class="text-center pt-20">Type in your email</h4>
+      <div class="row">
+        <div class="offset-2 col-8 text-center">
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg" ng-model="vm.account.email" placeholder="Email">
+          </div>
+        </div>
+      </div>
+      <h4 class="text-center pt-20">Type in your password</h4>
+      <div class="row">
+        <div class="offset-2 col-8 text-center">
+          <div class="form-group">
+            <input type="password" class="form-control form-control-lg" ng-model="vm.account.password" placeholder="Password">
+          </div>
+        </div>
+        </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'cookieLaw'">Back</button>
+          <button class="btn btn-primary" ng-click="vm.createAccount()" ng-disabled="!vm.account.email && !vm.account.password || vm.formLoading">
+            <i ng-if="vm.formLoading" class="fa fa-spinner fa-spin"></i>
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Website Type step-->
+    <div ng-if="vm.studioRegisterStep === 'websiteType'">
+      <h2 class="modal-title text-center pb-20">Select the type of website.</h2>
+      <div class="row">
+        <div class="col-6 col-md-4 text-center" ng-repeat="websiteName in vm.savedStudioData.websiteType track by $index">
+          <figure class="overlay overlay-hover" ng-click="vm.myStudioValues.type = websiteName">
+            <img class="overlay-figure" src="/client/assets/images/placeholder.png" ng-class="{'img-bordered img-bordered-primary': vm.myStudioValues.type === websiteName}">
+            <figcaption class="overlay-panel overlay-background overlay-fade overlay-icon">
+              <a class="icon wb-check" href="javascript:"></a>
+            </figcaption>
+          </figure>
+          <h6>{{ ::websiteName }}</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'accountOwner'">Back</button>
+          <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'websiteCategory'" ng-disabled="!vm.myStudioValues.type">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category step-->
+    <div ng-if="vm.studioRegisterStep === 'websiteCategory'">
+      <h2 class="text-center pb-20">Pick a category</h2>
+      <div class="row">
+        <div class="col-6 col-md-3 text-center" ng-repeat="websiteCategory in vm.savedStudioData.websiteCategory track by $index">
+          <figure class="overlay overlay-hover" ng-click="vm.myStudioValues.category = websiteCategory">
+            <img class="overlay-figure" src="/client/assets/images/placeholder.png" ng-class="{'img-bordered img-bordered-primary': vm.myStudioValues.category === websiteCategory}">
+            <figcaption class="overlay-panel overlay-background overlay-fade overlay-icon">
+              <a class="icon wb-check" href="javascript:"></a>
+            </figcaption>
+          </figure>
+          <h6>{{ ::websiteCategory }}</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'websiteType'">Back</button>
+          <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'websiteTitle'" ng-disabled="!vm.myStudioValues.category">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Website title step-->
+    <div ng-if="vm.studioRegisterStep === 'websiteTitle'">
+      <h2 class="text-center pb-20">Type your web page title</h2>
+      <div class="row">
+        <div class="alert dark alert-danger alert-dismissible offset-3 col-6" role="alert" ng-if="vm.errors['business-name'].isError">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+          {{ vm.errors['business-name'].msg}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="offset-3 col-6 text-center">
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg" ng-model="vm.myStudioValues.studioId" placeholder="My sushiritto">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'websiteCategory'">Back</button>
+          <button class="btn btn-primary" ng-click="vm.checkStudioNameUnicity()" ng-disabled="!vm.myStudioValues.studioId || vm.formLoading">
+            <i ng-if="vm.formLoading" class="fa fa-spinner fa-spin"></i>
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Website Description step-->
+    <div ng-if="vm.studioRegisterStep === 'websiteDescription'">
+      <h2 class="text-center pb-20">Type a short description of your personal website.</h2>
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="form-group">
+            <textarea class="form-control" ng-model="vm.myStudioValues.MetaDescription" rows="5"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'websiteTitle'">Back</button>
+          <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'websiteKeywords'">Skip</button>
+          <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'websiteKeywords'" ng-disabled="!vm.myStudioValues.MetaDescription">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Website Keywords step-->
+    <div ng-if="vm.studioRegisterStep === 'websiteKeywords'">
+      <h2 class="text-center pb-20">Enter or select suggested keywords for Search Engine Optimization.</h2>
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="form-group">
+            <tags-input ng-model="vm.myStudioValues.keywords"></tags-input>
+          </div>
+        </div>
+        <div class="col-12 keywords">
+          <h5>Suggested Keywords</h5>
+              <span class="badge badge-round badge-default badge-lg"
+                    ng-click="vm.pushKeyword(SuggestedKeyword)"
+                    ng-class="{'selected-badge': vm.isKeywordExist(SuggestedKeyword)}"
+                    ng-repeat="SuggestedKeyword in vm.savedStudioData.suggestedKeywords track by $index">
+                {{ ::SuggestedKeyword }}
+              </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'websiteDescription'">Back</button>
+          <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'websiteImage'">Skip</button>
+          <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'websiteImage'" ng-disabled="!vm.myStudioValues.keywords.length">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Website image step-->
+    <div ng-if="vm.studioRegisterStep === 'websiteImage'">
+      <div class="modal-body">
+        <h2 class="modal-title text-center pb-20">Upload a logo of your website</h2>
+        <div class="row">
+          <div class="col-12 text-center">
+            <uploader on-image-uploaded="vm.addImage(url)"></uploader>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'websiteKeywords'">Back</button>
+          <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'websiteColors'">Skip</button>
+          <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'websiteColors'">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Website Keywords step-->
+    <div ng-if="vm.studioRegisterStep === 'websiteColors'">
+      <div class="modal-body">
+        <h2 class="modal-title text-center pb-20">Pick two colors that represent your business</h2>
+        <div class="row">
+          <div class="col-12">
+            <div class="color-primaries">
+              <div
+                ng-repeat="color in vm.savedStudioData.colors track by $index"
+                ng-click="vm.pushColor(color)"
+                style="cursor: pointer;"
+                ng-class="{'img-bordered img-bordered-primary': vm.isColorSelected(color)}"
+                ng-style="{'background-color': color}"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'websiteImage'">Back</button>
+          <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'websiteFeatures'">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features step-->
+    <div ng-if="vm.studioRegisterStep === 'websiteFeatures'">
+      <h2 class="text-center pb-20">Pick features</h2>
+      <div class="row">
+        <div class="col-6 col-md-3 text-center" ng-repeat="websiteFeature in vm.savedStudioData.websiteFeatures track by $index">
+          <figure class="overlay overlay-hover"
+                  ng-click="vm.pushFeature(websiteFeature)">
+            <img class="overlay-figure" src="/client/assets/images/placeholder.png" ng-class="{'img-bordered img-bordered-primary': vm.isFeatureExist(websiteFeature)}">
+            <figcaption class="overlay-panel overlay-background overlay-fade overlay-icon">
+              <a class="icon wb-check" href="javascript:"></a>
+            </figcaption>
+          </figure>
+          <h6>{{ ::websiteFeature.label }}</h6>
+        </div>
+      </div>
+      <div class="col-12 text-center">
+        <button class="btn btn-primary" ng-click="vm.studioRegisterStep = 'websiteColors'">Back</button>
+        <button class="btn btn-primary" ng-click="vm.makeStudio()" ng-disabled="!vm.myStudioValues.features.length">Next</button>
+      </div>
+    </div>
+
+    <div ng-if="vm.studioRegisterStep === 'websiteBuilding'" ng-init="vm.customizeStep = 0">
+      <div class="row">
+        <div class="col-9">
+            <toolbox-location ng-if="vm.myStudioValues.features[vm.customizeStep].name === 'location'" data="vm.myStudioValues.features[vm.customizeStep].data"></toolbox-location>
+            <toolbox-contact-us ng-if="vm.myStudioValues.features[vm.customizeStep].name === 'contact-us'" data="vm.myStudioValues.features[vm.customizeStep].data"></toolbox-contact-us>
+            <toolbox-slider ng-if="vm.myStudioValues.features[vm.customizeStep].name === 'slide-show'" data="vm.myStudioValues.features[vm.customizeStep].data"></toolbox-slider>
+            <toolbox-about-us ng-if="vm.myStudioValues.features[vm.customizeStep].name === 'about-us'" data="vm.myStudioValues.features[vm.customizeStep].data"></toolbox-about-us>
+            <toolbox-advance-product-catalog ng-if="vm.myStudioValues.features[vm.customizeStep].name === 'product-catalog'" data="vm.myStudioValues.features[vm.customizeStep].data"></toolbox-advance-product-catalog>
+            <toolbox-product-service ng-if="vm.myStudioValues.features[vm.customizeStep].name === 'product-service'" data="vm.myStudioValues.features[vm.customizeStep].data"></toolbox-product-service>
+            <toolbox-subscription ng-if="vm.myStudioValues.features[vm.customizeStep].name === 'subscription'" data="vm.myStudioValues.features[vm.customizeStep].data"></toolbox-subscription>
+            <toolbox-news-announcement ng-if="vm.myStudioValues.features[vm.customizeStep].name === 'news-announcement'" data="vm.myStudioValues.features[vm.customizeStep].data"></toolbox-news-announcement>
+            <toolbox-gallery ng-if="vm.myStudioValues.features[vm.customizeStep].name === 'gallery'" data="vm.myStudioValues.features[vm.customizeStep].data"></toolbox-gallery>
+            <toolbox-social-media ng-if="vm.myStudioValues.features[vm.customizeStep].name === 'social-media'" data="vm.myStudioValues.features[vm.customizeStep].data"></toolbox-social-media>
+        </div>
+        <div class="col-3">
+          <div class="row">
+            <div class="color-primaries-small">
+              <div class="bg-green-300"
+                   ng-repeat="feature in vm.myStudioValues.features"
+                   ng-class="{'bg-green-300': vm.customizeStep == $index, 'bg-blue-300': vm.customizeStep > $index, 'bg-blue-grey-300': vm.customizeStep < $index}"
+              >
+                <p class="color-labels">{{::feature.label}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <button class="btn btn-primary" ng-disabled="vm.customizeStep == 0" ng-click="vm.customizeStep = vm.customizeStep - 1">Back</button>
+          <button class="btn btn-primary" ng-if="vm.customizeStep < vm.myStudioValues.features.length - 1" ng-click="vm.customizeStep = vm.customizeStep + 1">Next</button>
+          <button class="btn btn-primary" ng-if="vm.customizeStep >= vm.myStudioValues.features.length - 1" ng-click="vm.saveSections()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

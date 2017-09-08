@@ -1,0 +1,94 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~angular-ui-notification/dist/angular-ui-notification.css';
+@import '~ng-tags-input/build/ng-tags-input.css';
+@import '~angular-ui-switch/angular-ui-switch.css';
+/**
+ * Bootstrap Fonts
+ */
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../assets/fonts/bootstrap/glyphicons-halflings-regular.eot');
+  src: url('../assets/fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+  url('../assets/fonts/bootstrap/glyphicons-halflings-regular.woff') format('woff'),
+  url('../assets/fonts/bootstrap/glyphicons-halflings-regular.ttf') format('truetype'),
+  url('../assets/fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+@import '~font-awesome/css/font-awesome.css';
+
+/**
+ *Font Awesome Fonts
+ */
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('/assets/fonts/font-awesome/fontawesome-webfont.eot?v=4.1.0');
+  src: url('/assets/fonts/font-awesome/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'),
+  url('/assets/fonts/font-awesome/fontawesome-webfont.woff?v=4.1.0') format('woff'),
+  url('/assets/fonts/font-awesome/fontawesome-webfont.ttf?v=4.1.0') format('truetype'),
+  url('/assets/fonts/font-awesome/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/**
+ * App-wide Styles
+ */
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* Hack to make popups work with bootstrap 4*/
+.fade.in {
+  opacity: 1;
+}
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.modal-backdrop.in {
+  opacity: 0.5;
+}
+
+
+/* Component styles are injected through gulp */
+/* inject:css */
+@import 'account/signup/signup.css';
+@import 'admin/admin.css';
+@import 'dashboard/dashboard.css';
+@import 'main/main.css';
+@import 'studio/build/buildStudio.css';
+@import 'studio/studio.css';
+@import '/client/assets/css/bootstrap-extend.min.css';
+@import '/client/assets/css/bootstrap-glyphicon.css';
+@import '/client/assets/css/datetimepicker.css';
+@import '/client/assets/css/site.css';
+@import '/client/assets/fonts/brand-icons/brand-icons.css';
+@import '/client/assets/fonts/brand-icons/brand-icons.min.css';
+@import '/client/assets/fonts/web-icons/web-icons.css';
+@import '/client/assets/fonts/web-icons/web-icons.min.css';
+@import '/client/assets/js/animsition/animsition.css';
+@import '/client/assets/js/asscrollable/asScrollable.css';
+@import '/client/assets/js/intro-js/introjs-rtl.css';
+@import '/client/assets/js/intro-js/introjs.css';
+@import '/client/assets/js/slidepanel/slidePanel.css';
+@import '/client/assets/js/tether/tether.css';
+@import '/client/assets/js/tether/tether.min.css';
+@import '../components/footer/footer.css';
+@import '../components/modal/modal.css';
+@import '../components/registerWizard/wizard.css';
+@import '../components/toolbox/aboutUs/aboutUs.css';
+@import '../components/toolbox/contactUs/contactUs.css';
+@import '../components/toolbox/location/location.css';
+@import '../components/toolbox/newsAnnouncement/newsAnnouncement.css';
+@import '../components/toolbox/slider/slider.css';
+@import '../components/toolbox/socialMedia/socialMedia.css';
+@import '../components/toolbox/testimonial/testimonial.css';
+@import '../components/uploader/uploader.css';
+/* endinject */

@@ -1,0 +1,40 @@
+mixin productCatalog(data)
+  .container
+    .row
+      section#product-catalog
+        .board
+          // <h2>Welcome to IGHALO!<sup>™</sup></h2>
+          .board-inner
+            ul#myTab.nav.nav-tabs
+              .liner
+              each catalog,index in data.catalogues
+                if(index === 0)
+                  li.active
+                    a(href='#' + catalog, data-toggle='tab', title=catalog)
+                      span.round-tabs.one
+                        | #{catalog}
+                else
+                  li
+                    a(href='#' + catalog, data-toggle='tab', title=catalog)
+                      span.round-tabs.one
+                        | #{catalog}
+          .tab-content
+            each catalog,index in data.catalogues
+              if(index === 0)
+                .tab-pane.fade.in.active(id=catalog)
+                  .row
+                    each product,index in data.items
+                      if(product.catalog === catalog)
+                        .col-md-3.col-sm-4.col-xs-6.thumbnail
+                          img.img-responsive(src=product.imageUrl)
+                          h4 #{product.title}
+                          p #{product.description}
+              else
+                .tab-pane.fade.in(id=catalog)
+                  .row
+                    each product,index in data.items
+                      if(product.catalog === catalog)
+                        .col-md-3.col-sm-4.col-xs-6.thumbnail
+                          img.img-responsive(src=product.imageUrl)
+                          h4 #{product.title}
+                          p #{product.description}
